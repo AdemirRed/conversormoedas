@@ -107,7 +107,7 @@ function convertValue() {
                             currency: "BTC"
                         }).format(intValor * (dolarHoje / bitcoinHoje))
                     } else {
-                        alert("Erro: Moeda de destino não suportada");
+                        alert("Erro: Moeda de destino não suportada!");
                     }
     } //Conversão com o Euro
     else if (primeiraMoeda.value == "euro") {
