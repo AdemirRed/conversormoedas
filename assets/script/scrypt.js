@@ -299,5 +299,5 @@ segundaMoeda.addEventListener("change", atualizarIMG2); //toda vez que eu trocar
 // setInterval(atualizarIMG, 100)
 
 window.addEventListener("load", function () {
-    alert("Os valores das moedas são fixos /exemplos.\nO site é somente um projeto e não pode ser usado para finz de conversão real!.");
+    alert("Os valores das moedas são fixos /exemplos.\nO site é somente um projeto e não pode ser usado para finz de conversão Real!");
 });
