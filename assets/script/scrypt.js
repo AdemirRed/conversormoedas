@@ -168,7 +168,7 @@ async function convertValue() {
                 currency: "BRL"
             }).format(intValor * (libraHoje / realHoje)) //Formatação da moeda real brasileiro
 
-        } if (segundaMoeda.value == "dolar") {
+        } else if (segundaMoeda.value == "dolar") {
             textoMoedasConvertidas.innerHTML = new Intl.NumberFormat("en-US", {
                 style: "currency",
                 currency: "USD"
