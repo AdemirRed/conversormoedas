@@ -1,8 +1,3 @@
-var dolarHoje = 4.97 //Valor do Dolar hoje
-var euroHoje = 5.37 //Valor do Euro Hoje
-var libraHoje = 6.28 //Valor do libra Hoje
-var bitcoinHoje = 21365276 //Valor do Bitcoin Hoje
-var realHoje = 1
 
 const botaoDeConversao = document.querySelector(".convert-button");    //Botão para converter
 
@@ -23,7 +18,22 @@ const segundaMoeda = document.querySelector(".currency-select"); //Moeda que foi
 
 
 
-function convertValue() {
+async function convertValue() {
+
+ const data = await fetch("https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL,GBP").then( response => response.json())
+ console.log(data);
+ 
+ var dolarHoje = data.USDBRL.high //Valor do Dolar hoje
+ var euroHoje = data.EURBRL.high //Valor do Euro Hoje
+ var libraHoje = data.GBPBRL.high //Valor do libra Hoje
+ var bitcoinHoje = data.BTCBRL.high //Valor do Bitcoin Hoje
+ var realHoje = 1
+
+
+
+
+
+
 
     const intValor = document.getElementById("valor-digitado").value; //valor digitado pelo usuario
 
@@ -228,7 +238,6 @@ botaoDeConversao.addEventListener("click", convertValue);
 
 
 function atualizarIMG1() {
-
     if (primeiraMoeda.value == "euro") {
         textoPrimeiraMoeda.innerHTML = ("Euro")
         imagem1.src = "./assets/img/euro.png"
@@ -257,10 +266,12 @@ function atualizarIMG1() {
         imagem1.src = "./assets/img/real.png"
         textoMoedasAConverter.innerHTML = ("BTC 0.0")
     }
+    convertValue()
 }
 
 
 function atualizarIMG2() {
+   
     if (segundaMoeda.value == "euro") {
         textoSegundaMoeda.innerHTML = ("Euro")
         imagem2.src = "./assets/img/euro.png"
@@ -289,7 +300,7 @@ function atualizarIMG2() {
         textoMoedasConvertidas.innerHTML = ("R$ 00,00")
     }
 
-
+    convertValue()
 }
 
 primeiraMoeda.addEventListener("change", atualizarIMG1); //toda vez que eu trocar de moeda atualiza as imagens
@@ -298,6 +309,6 @@ segundaMoeda.addEventListener("change", atualizarIMG2); //toda vez que eu trocar
 
 // setInterval(atualizarIMG, 100)
 
-window.addEventListener("load", function () {
-    alert("Os valores das moedas são fixos /exemplos.\nO site é somente um projeto e NÃO pode ser usado para finz de conversão Real!");
-});
+// window.addEventListener("load", function () {
+//     alert("Os valores das moedas são fixos /exemplos.\nO site é somente um projeto e NÃO pode ser usado para finz de conversão Real!");
+// });
